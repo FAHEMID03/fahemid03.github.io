@@ -1,0 +1,13 @@
+---
+interface Props {
+  title: string;
+  url: string;
+}
+
+const { title, url } = Astro.props;
+---
+
+<a href={url} class="interactable">
+  <span class="sr-only">{title}</span>
+  <slot />
+</a>

@@ -1,0 +1,414 @@
+---
+import { Image } from "astro:assets";
+import IndexLayout from "../layouts/IndexLayout.astro";
+import ExperienceCard from "../components/ExperienceCard.astro";
+import StickySection from "../components/StickySection.astro";
+import Header from "../components/Header.astro";
+import AnimatedLink from "../components/AnimatedLink.astro";
+import CompanyCard from "../components/CompanyCard.astro";
+
+import me from "../assets/images/me.jpg";
+---
+
+<IndexLayout title="SK ABDUL FAHEMID">
+  <Header slot="header" />
+  <Fragment slot="main">
+    <StickySection sectionTitle="About" id="about">
+      <div class="profile-pic-wrapper">
+        <Image src={me} alt={"My picture"} />
+      </div>
+      <p>
+        I have 7.5+ yrs Experience as Senior Verification Engineer with a
+        demonstrated history of working in the semiconductors industry. Have a
+        strong verification skill like constraints-based Environment testing and
+        debugging, for successful ASIC and FPGA Development. Developed a
+        Test-bench architecture for sequences/Driver using System Verilog
+        language Framework using (UVM-Universal Verification Methodology).
+        Verilog/HDL, VHDL, C, C++.
+      </p>
+      <p>
+        I have extensive experience with various protocols such as AXI-3, AXI-4,
+        I2C, I3C, SMBUS, AMBA-CHI5, PCIe, ETHERNET, and SPI. This diverse
+        protocol exposure highlights his versatility in handling a wide range of
+        projects and scenarios within the VLSI domain.
+      </p>
+      <p>
+        I have Strong communication, interpersonal, and presentation skills. A
+        skilled communicator, able to synthesize and deliver complex information
+        to diverse audiences. Creative, flexible, able to adapt to changing
+        priorities and maintain a positive attitude and strong work ethic. A
+        track record for meeting timelines and exceeding expectations.
+      </p>
+    </StickySection>
+    <StickySection sectionTitle="Experience" id="experience">
+      <CompanyCard company="Wipro LTD" link="https://www.wipro.com/">
+        <ExperienceCard
+          start="NOV 2022"
+          end="present"
+          client="NXP"
+          first={true}
+          last={true}
+          role="Senior Verification lead L1"
+          project="Mc-Lena Ethernet"
+          skills={[
+            "Ethernet",
+            "System Verilog",
+            "UVM",
+            "GLS(Gate Level Of Simulation)",
+            "X-propagation",
+            "Python",
+            "Regression",
+          ]}
+        >
+          <ul class="pl-3 mb-0">
+            <li>Handling a small teams of developers.</li>
+            <li>TJA1104 (Mc-Lena) is 100 BASE-T1 Automotive Ethernet PHY.</li>
+            <li>
+              Mc-Lena is intended for system that need external 100 Base -T1
+              PHY.
+            </li>
+            <li>
+              The product is built around Si-proven butterfly which is 100Base
+              -T1 transceiver IP with Additional interface to support SGMII/XMII
+              PHY Interface.
+            </li>
+            <li>Implementation of GLS from scratch.</li>
+            <li>Debugging and fixed some failing tests.</li>
+            <li>
+              Perform Unit delay and timing delay gate level simulation for all
+              required testcase with provided SDFs for SMGII, XMII and no- VIP,
+              IP.
+            </li>
+            <li>Debugged Flop initialization issues and X propagation.</li>
+          </ul>
+        </ExperienceCard>
+      </CompanyCard>
+      <CompanyCard
+        company="L&T Technology"
+        link="https://www.larsentoubro.com/"
+      >
+        <ExperienceCard
+          start="SEPT 2021"
+          end="OCT 2022"
+          client="Intel"
+          last={true}
+          role="Senior Verification Engineer"
+          project="WHS-HALK"
+          skills={[
+            "S3M",
+            "System Verilog",
+            "Python Script",
+            "UVM",
+            "I2C",
+            "SMBUS",
+            "SPI",
+            "I3C",
+            "PCIe",
+          ]}
+        >
+          <ul class="pl-3 mb-0">
+            <li>
+              Understanding s3m bring up in WHS arc-based C test Development.
+            </li>
+            <li>
+              S3M is independent IP used for IBL soft memory used for initial
+              integration.
+            </li>
+            <li>
+              SOC integration s3m using for soft memory for ACE lib
+              “IBL_soft_mems” replace soft memory with HIP.
+            </li>
+            <li>Implementation for SMBUS testcase and debugging.</li>
+            <li>
+              Functional verification soc along with verifying
+              intercommunication between the sub blocks.
+            </li>
+            <li>Implantation for SPI Flash test case</li>
+            <li>Implement a checker for SPI flash</li>
+            <li>GLS implementation</li>
+            <li>
+              PCIe Debugging a test case check the link up for gen 3 recovery
+              CFG for PHY to MAC.
+            </li>
+            <li>I2C Debugging a Test Case.</li>
+            <li>
+              Inte x-propagation excluding incomplete test point and debug test
+              case
+            </li>
+          </ul>
+        </ExperienceCard>
+        <ExperienceCard
+          start="DEC 2020"
+          end="AUG 2021"
+          client="Cyient"
+          first={true}
+          role="Senior Verification Engineer"
+          project="Ethernet 800 G"
+          skills={["System Verilog", "Python Script", "UVM", "I2C", "Ethernet"]}
+        >
+          <ul class="pl-3 mb-0">
+            <li>Automatic FEC/CRC generation and monitoring/checking.</li>
+            <li>
+              Test case generation and checking (Directed, random and
+              semi-random/constrained-random test cases).
+            </li>
+            <li>100G lane round robin is followed on byte basis.</li>
+            <li>Round Robin scheme on packet basis for 800G traffic.</li>
+            <li>Integration &Testing, Fixing the bug and updating.</li>
+            <li>Implementation test case for scoreboard.</li>
+          </ul>
+        </ExperienceCard>
+      </CompanyCard>
+      <CompanyCard
+        company="Alpha Numero pvt.ltd"
+        link="https://alpha-numero.com/"
+      >
+        <ExperienceCard
+          start="March 2019"
+          end="NOV 2020"
+          client="Boeing"
+          last={true}
+          role="Verification Engineer"
+          project="DO-254,777-x"
+          skills={[
+            "System Verilog",
+            "UVM",
+            "Doors",
+            "Regression",
+            "VCD",
+            "VPRD",
+            "I2C",
+            "IOSF",
+            "ARINC-429",
+            "CLDL",
+            "AXI3",
+            "Code Reviewer",
+            "ADB",
+            "IFDL",
+          ]}
+        >
+          <ul class="pl-3 mb-0">
+            <li>Development a scoreboard and Arbiter.</li>
+            <li>
+              Triggering Error or Fatal Error NVM throughDevelopment a
+              scoreboard and Arbiter. VIP modification.
+            </li>
+            <li>Implantation testcase.</li>
+            <li>Predictor and sequences development as per requirement.</li>
+            <li>
+              Develop Verification Test Case by reviewing requirement provided
+              by client and file Problem Report.
+            </li>
+            <li>
+              Verification of VHDL Design of client propriety interfaces used in
+              design of PLDs.
+            </li>
+            <li>
+              Maintain a documatation in a Doors for VCD and VPRD requirement.
+            </li>
+            <li>
+              Worked on Code Coverage and modify the procedure to achieve
+              required percentage of coverage.
+            </li>
+            <li>
+              Review the Results of the Test and file the Problem Report for any
+              conflicts found.
+            </li>
+            <li>Test Plan creation and finding a link Error updating.</li>
+            <li>
+              Review Lead of getting all the Test Procedure reviewed by Reviewer
+              following the process mentioned under DO-254 standards Create
+              prediction logic.
+            </li>
+          </ul>
+        </ExperienceCard>
+        <ExperienceCard
+          start="NOV 2018"
+          end="FEB 2019"
+          client="Cadence"
+          first={true}
+          role="Verification Engineer"
+          project="Analog Discovery with hip Bord, FPGA"
+          skills={["System Verilog", "UVM", "Regression", "FPGA"]}
+        >
+          <ul class="pl-3 mb-0">
+            <li>
+              Developing test bench. Understanding the architecture and
+              developing test scenarios according to the verification plan.
+            </li>
+            <li>
+              To build the tb for driver, sequencer and monitor, sequences.
+            </li>
+            <li>
+              The Analog Discovery and the hip board create a 3 test through
+              wave from Air pump, water pump, and led.
+            </li>
+            <li>
+              Functional coverage analyzes through the coverage report make a
+              100 %.
+            </li>
+            <li>Debug high priority critical client issues for the project.</li>
+            <li>
+              The start digital discovery executing the project capturing the
+              wave from different cycle time.
+            </li>
+            <li>
+              Monitor debugs using developed test cases and report AHI report
+              with wave from automated Generate.
+            </li>
+            <li>Validation process after completing the verification.</li>
+          </ul>
+        </ExperienceCard>
+      </CompanyCard>
+
+      <CompanyCard company="CSS CORP PVT.LTD" link="https://www.movate.com/">
+        <ExperienceCard
+          start="AUG 2017"
+          end="July 2018"
+          client="HoneyWell"
+          last={true}
+          role=" Verification Engineer"
+          project="Wireless Monitor and Reciver"
+          skills={["System Verilog", "UVM", "SOc", "AXI-3", "Perl"]}
+        >
+          <ul class="pl-3 mb-0">
+            <li>
+              As per the Requirement, preparing a verification plan, creates
+              test-benches Environment.
+            </li>
+            <li>
+              Understanding the architecture and developing test case scenarios
+              according to the Blocks.
+            </li>
+            <li>
+              Analyze a code coverage and create a “init file” exclusion the
+              test case is not pass for 100 % coverage.
+            </li>
+            <li>To Build the test bench and writing the sequences.</li>
+            <li>Implement a coverage and predictor as per a requirement.</li>
+            <li>
+              Designed and analyzed test bench environment and perform required
+              modifications.
+            </li>
+            <li>
+              Experience in system level and module / block level verification
+              ARM based SOC.
+            </li>
+          </ul>
+        </ExperienceCard>
+        <ExperienceCard
+          start="JAN 2017"
+          end="July 2017"
+          client="Cisco"
+          role=" Verification Engineer"
+          project="SG300-52p-28p"
+          skills={["System Verilog", "UVM", "SOc", "AXI-3", "Perl", "SPI"]}
+        >
+          <ul class="pl-3 mb-0">
+            <li>
+              Understanding the architecture and developing test scenarios
+              according to the verification plan.
+            </li>
+            <li>
+              Write a Verification Environment generate a signal and stimulate
+              through DUT.
+            </li>
+            <li>The consists of 3 different fields Header, data, FCS.</li>
+            <li>
+              DUT under the test Verification IP to a Signals and environment
+              through the coverage.
+            </li>
+            <li>The simulation time Bed FCS and Good FCS Report Showing.</li>
+            <li>
+              The overall design, preparing a verification plan, creates
+              test-benches, debug verification results.
+            </li>
+          </ul>
+        </ExperienceCard>
+        <ExperienceCard
+          start="JAN 2016"
+          end="June 2016"
+          client="Truechip"
+          role="Design Engineer"
+          project="USB-3.0"
+          skills={["Verilog", "HDL", "Codecovarage"]}
+        >
+          <ul class="pl-3 mb-0">
+            <li>
+              As per the client Requirement or Specification implement a design.
+            </li>
+            <li>Synthesis tools can detect RAM designs in the HDL code.</li>
+            <li>
+              The design unit dynamically switches between read and write
+              operations
+            </li>
+            <li>Filling and fixing the verification bugs.</li>
+            <li>Debugged and trace back issues using Sim-Vision tool.</li>
+            <li>
+              Assigned to create test cases to verify the BUS and Interrupts.
+            </li>
+          </ul>
+        </ExperienceCard>
+        <ExperienceCard
+          start="JUNE 2015"
+          end="DEC 2016"
+          client="Feature Electronic"
+          first={true}
+          role="Design Engineer"
+          project="DDR3"
+          skills={["Verilog", "HDL", "Codecovarage"]}
+        >
+          <ul class="pl-3 mb-0">
+            <li>
+              As per the client Requirement or Specification implement a design.
+            </li>
+            <li>Synthesis tools can detect RAM designs in the HDL code.</li>
+            <li>
+              The design unit dynamically switches between read and writes
+              operations.
+            </li>
+            <li>Filling and fixing the verification bugs.</li>
+            <li>Debugged and trace back issues using Sim-Vision tool.</li>
+            <li>
+              Assigned to create test cases to verify the BUS and Interrupts.
+            </li>
+          </ul>
+        </ExperienceCard>
+      </CompanyCard>
+
+      <AnimatedLink href="">Check full Résumé</AnimatedLink>
+    </StickySection>
+  </Fragment>
+  <p slot="footer">
+    This site is built using <a
+      href="https://astro.build/"
+      target="_blank"
+      class="inline-link interactable"
+    >
+      Astro
+    </a>
+     framework. Design is inspired by the amazing work of <a
+      href="https://brittanychiang.com/"
+      target="_blank"
+      class="inline-link interactable"
+    >
+      Brittany Chiang
+    </a>.
+  </p>
+</IndexLayout>
+
+<style>
+  .profile-pic-wrapper {
+    display: flex;
+    justify-content: center;
+    height: 20rem;
+  }
+
+  .profile-pic-wrapper > img {
+    border-radius: 20rem;
+    height: 100%;
+    width: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+</style>

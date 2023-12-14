@@ -1,0 +1,39 @@
+---
+import AnimatedLink from "./AnimatedLink.astro";
+export interface Props {
+  company: string;
+  link: string;
+}
+
+const { company, link } = Astro.props;
+---
+
+<section class="flow">
+  <div class="title-container">
+    <AnimatedLink href={link}>
+      <h3 class="interactable">{company}</h3>
+    </AnimatedLink>
+  </div>
+  <slot />
+</section>
+
+<style>
+  .title-container {
+    position: sticky;
+    background-color: hsl(var(--surface1-hsl));
+    color: var(--text2);
+    top: 3rem;
+    padding-block: 1em;
+    margin-inline: -0.5rem;
+    padding-inline: 0.5rem;
+    backdrop-filter: blur(6px);
+    z-index: 5;
+  }
+
+  @media screen and (min-width: 51em) {
+    .title-container {
+      top: 0;
+      padding-inline: 1.5rem;
+    }
+  }
+</style>

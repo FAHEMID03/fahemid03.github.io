@@ -1,0 +1,152 @@
+---
+import Chip from "./Chip.astro";
+export interface Props {
+  start: string;
+  end: string;
+  role: string;
+  skills: string[];
+  client?: string;
+  project?: string;
+  first?: boolean;
+  last?: boolean;
+}
+
+const {
+  start,
+  end,
+  role,
+  skills,
+  client,
+  project,
+  first = false,
+  last = false,
+} = Astro.props;
+---
+
+<div class="card">
+  <div class="lead-wrapper">
+    <div class="lead" data-first=`${first}` data-last=`${last}`>
+      <span>{end}</span>
+      <div class="mx-3" aria-hidden="true"></div>
+      <span>{start}</span>
+    </div>
+  </div>
+  <div>
+    <h3>{role}</h3>
+    {client ? <div class="sub-heading">Client: {client}</div> : null}
+    {project ? <div class="sub-heading">Project: {project}</div> : null}
+  </div>
+  <slot />
+  {
+    skills ? (
+      <ul class="plain-list flex flex-wrap">
+        {skills.map((item) => (
+          <li>
+            <Chip data={item} />
+          </li>
+        ))}
+      </ul>
+    ) : null
+  }
+</div>
+
+<style>
+  .card {
+    --flow-size: var(--gap-3);
+
+    display: grid;
+    /* padding-block: 2rem; */
+  }
+
+  h3 {
+    margin-block-start: 0;
+  }
+
+  h3 {
+    color: var(--text2);
+  }
+
+  ul {
+    margin-block-end: 0;
+  }
+
+  .sub-heading {
+    padding-block-start: 0.5em;
+    font-weight: bold;
+  }
+
+  .lead {
+    --_ball-size: 10px;
+    --_color: var(--text1);
+
+    display: inline-flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    text-transform: uppercase;
+  }
+
+  .lead > div {
+    position: relative;
+    background-color: var(--_color);
+    width: 2rem;
+    height: 2px;
+    justify-self: center;
+  }
+
+  .lead[data-first="true"] > div::before,
+  .lead[data-last="true"] > div::after {
+    content: "";
+    position: absolute;
+    height: var(--_ball-size);
+    aspect-ratio: 1;
+    border-radius: var(--_ball-size);
+    background-color: var(--_color);
+    top: calc(-1 * var(--_ball-size) / 2 + 1px);
+  }
+
+  .lead[data-first="true"] > div::before {
+    left: 0px;
+  }
+
+  .lead[data-last="true"] > div::after {
+    right: 0px;
+  }
+
+  @media screen and (min-width: 40em) {
+    .card {
+      grid-template-columns: 8rem 1fr;
+    }
+
+    .lead-wrapper {
+      grid-row: 1 / 4;
+      padding-inline-end: 1em;
+      padding-block: 0;
+    }
+
+    .lead {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      text-align: center;
+      height: 100%;
+    }
+
+    .lead > div {
+      height: calc(100% - 4 * var(--_ball-size));
+      width: 2px;
+    }
+
+    .lead[data-first="true"] > div::before,
+    .lead[data-last="true"] > div::after {
+      left: calc(-1 * var(--_ball-size) / 2 + 1px);
+    }
+
+    .lead[data-first="true"] > div::before {
+      top: auto;
+      bottom: 0px;
+    }
+
+    .lead[data-last="true"] > div::after {
+      top: 0px;
+    }
+  }
+</style>

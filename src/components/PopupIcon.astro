@@ -1,0 +1,47 @@
+<div class="popup | interactable" onclick="togglePopup(this)">
+  <div class="popup-box">
+    <slot name="body" />
+  </div>
+  <slot name="icon" />
+</div>
+
+<style>
+  .popup {
+    position: relative;
+  }
+
+  .popup-box {
+    display: none;
+    background-color: var(--surface2);
+    border-radius: 4px;
+    color: var(--text3);
+    position: absolute;
+    left: 50%;
+    bottom: calc(20px + 100%);
+    transform: translateX(-50%);
+    z-index: 5;
+  }
+
+  .popup-box::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px;
+    border-style: solid;
+    border-color: var(--surface2) transparent transparent transparent;
+  }
+
+  .popup[data-open="true"] > .popup-box {
+    display: block;
+  }
+</style>
+
+<script is:inline>
+  function togglePopup(element) {
+    const state = element.dataset?.open ?? "false";
+    if (state === "false") element.dataset.open = "true";
+    else element.dataset.open = "false";
+  }
+</script>

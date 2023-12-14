@@ -1,0 +1,174 @@
+<nav id="nav-bar">
+  <ul class="plain-list">
+    <li>
+      <a href="#about" class="interactable">
+        <div class="indicator" aria-hidden="true"></div>
+         About
+      </a>
+    </li>
+    <li>
+      <a href="#experience" class="interactable">
+        <div class="indicator" aria-hidden="true"></div>
+         Experience
+      </a>
+    </li>
+    <!-- <li>
+      <a href="#projects" class="interactable">
+        <div class="indicator" aria-hidden="true"></div>
+         Projects
+      </a>
+    </li> -->
+  </ul>
+</nav>
+
+<style>
+  nav {
+    align-self: center;
+  }
+
+  ul {
+    display: inline-flex;
+    gap: 1.5rem;
+  }
+
+  ul > li {
+    color: var(--text2);
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .indicator-wrapper {
+    display: none;
+  }
+
+  @media screen and (min-width: 51em) {
+    ul {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      margin-block: 0.5em;
+    }
+
+    .indicator {
+      --_ball-size: 8px;
+      --_color: var(--text1);
+
+      display: block;
+      position: relative;
+      background-color: var(--_color);
+      height: 2px;
+      width: 0px;
+      transition: width 200ms ease-in-out;
+    }
+
+    .indicator::before,
+    .indicator::after {
+      content: "";
+      position: absolute;
+      height: var(--_ball-size);
+      aspect-ratio: 1;
+      border-radius: var(--_ball-size);
+      background-color: var(--_color);
+      top: calc(-1 * var(--_ball-size) / 2 + 1px);
+    }
+
+    .indicator::before {
+      left: 0;
+    }
+
+    .indicator::after {
+      right: calc(-1 * var(--_ball-size));
+    }
+
+    a:hover > .indicator,
+    a[data-active="true"] > .indicator {
+      width: 2rem;
+    }
+  }
+</style>
+
+<script>
+  const sectionIds = ["about", "experience"];
+  const sections: Map<string, HTMLElement> = new Map();
+  const navLinks: Map<string, HTMLAnchorElement> = new Map();
+
+  const navbar = document.getElementById("nav-bar")!!;
+  sectionIds.forEach((id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      sections.set(id, section);
+    } else {
+      console.error(`No section with id: ${id} found.`);
+    }
+
+    const navLink: HTMLAnchorElement | null = navbar.querySelector(
+      `a[href="#${id}"]`
+    );
+
+    if (navLink) {
+      navLinks.set(id, navLink);
+    } else {
+      console.error(`No anchor tag with href #${id} found.`);
+    }
+  });
+
+  function calculateThreshold(
+    section: HTMLElement,
+    minVisibility: number = 0.5
+  ) {
+    const sectionHeight = section.getBoundingClientRect().height;
+    return Math.min(1, (window.innerHeight / sectionHeight) * minVisibility);
+  }
+
+  function registerObserver(section: HTMLElement) {
+    const threshold = calculateThreshold(section);
+
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: threshold,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const sectionId = entry.target.id;
+        const link = navLinks.get(sectionId);
+        if (!link) return;
+
+        if (entry.isIntersecting) {
+          navLinks.forEach((element) => {
+            element.dataset.active = "false";
+          });
+          link.dataset.active = "true";
+        }
+      });
+    }, options);
+
+    observer.observe(section);
+  }
+
+  sections.forEach((section) => registerObserver(section));
+
+  navLinks.forEach((link, targetId) => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      const targetElement = sections.get(targetId);
+      if (targetElement) {
+        const yOffset = 0;
+
+        window.scrollTo({
+          top: targetElement.offsetTop + yOffset,
+          behavior: "smooth",
+        });
+      }
+    });
+  });
+</script>

@@ -1,0 +1,139 @@
+---
+import IconLink from "./IconLink.astro";
+import Navbar from "./Navbar.astro";
+import PopupIcon from "./PopupIcon.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+import Github from "./icons/Github.astro";
+import Linkedin from "./icons/Linkedin.astro";
+import Mail from "./icons/Mail.astro";
+import Resume from "./icons/Resume.astro";
+---
+
+<div class="header-wrapper">
+  <div class="description">
+    <h1 class="interactable">SK ABDUL FAHEMID</h1>
+    <h2 class="my-3">Senior Verification Engineer at WIPRO</h2>
+    <p>
+      I have experience in design and verification of FPGA and ASIC, SOC/IP.
+    </p>
+  </div>
+  <Navbar />
+  <ul class="social | plain-list flex flex-wrap">
+    <li>
+      <IconLink title="Github" url="https://github.com/fahemid03/">
+        <Github />
+      </IconLink>
+    </li>
+    <li>
+      <IconLink
+        title="Linkedin"
+        url="https://www.linkedin.com/in/sk-abdul-fahemid-643023a7/"
+      >
+        <Linkedin />
+      </IconLink>
+    </li>
+    <li><ThemeToggle /></li>
+    <li>
+      <PopupIcon>
+        <div slot="body" class="emails">
+          <ul class="plain-list">
+            <li>
+              <a href="mailto:skabdulfahemid@outlook.com">
+                skabdulfahemid@outlook.com
+              </a>
+            </li>
+            <li>
+              <a href="mailto:skabdulfahemid@gmail.com"
+                >skabdulfahemid@gmail.com</a
+              >
+            </li>
+          </ul>
+        </div>
+        <Mail slot="icon" />
+      </PopupIcon>
+    </li>
+    <li>
+      <IconLink
+        title="My Resume"
+        url="https://drive.google.com/file/d/1uxa5DogpW9DGgBfP32ySv0upkqKh_c-8/view?usp=sharing"
+      >
+        <Resume />
+      </IconLink>
+    </li>
+  </ul>
+</div>
+
+<style>
+  .header-wrapper {
+    display: grid;
+    grid-template-rows: 1fr auto auto;
+    text-align: center;
+    height: 100%;
+  }
+
+  .description {
+    align-self: center;
+  }
+
+  h1 {
+    font-size: var(--fs-1);
+    color: var(--text2);
+  }
+
+  h2 {
+    font-size: var(--fs-2);
+  }
+
+  p {
+    max-width: 32ch;
+    margin-inline: auto;
+  }
+
+  .social {
+    align-items: center;
+    gap: 1rem;
+    line-height: 0;
+
+    justify-content: center;
+    margin-block-start: 2rem;
+    margin-block-end: calc(100lvh - 100svh);
+  }
+
+  .social > li {
+    color: var(--text1);
+  }
+
+  .social > li:hover {
+    color: var(--text2);
+  }
+
+  .emails {
+    line-height: 1;
+    padding: 1rem;
+    width: max-content;
+  }
+
+  .emails > ul > li {
+    padding-block: 0.5em;
+  }
+
+  @media screen and (min-width: 51em) {
+    .header-wrapper {
+      text-align: start;
+      grid-template-rows: auto 1fr auto;
+    }
+
+    .description {
+      align-self: flex-start;
+    }
+
+    p {
+      margin-inline: 0;
+    }
+
+    .social {
+      justify-content: flex-start;
+      margin-block: 0;
+    }
+  }
+</style>

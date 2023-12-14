@@ -1,0 +1,28 @@
+{
+  "name": "profile-v1",
+  "type": "module",
+  "version": "0.0.1",
+  "author": "Md Azharuddin <mdazhar.1038@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azhar1038/profile-v1"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/preact": "^3.0.1",
+    "@fontsource/poppins": "^5.0.8",
+    "@nanostores/preact": "^0.5.0",
+    "astro": "^3.5.4",
+    "nanostores": "^0.9.5",
+    "preact": "^10.19.2"
+  },
+  "devDependencies": {
+    "sharp": "^0.32.6"
+  }
+}

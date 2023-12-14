@@ -1,0 +1,80 @@
+---
+import "@fontsource/poppins";
+
+import "../styles/reset.css";
+import "../styles/root.css";
+import "../styles/global.css";
+import MouseTrailer from "../components/MouseTrailer.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="hsl(21 46% 46%)" />
+    <!-- <link rel="icon" href="/favicon.ico" sizes="any" /> -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="generator" content={Astro.generator} />
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Md Azharuddin" />
+    <meta name="author" content="Md Azharuddin" />
+    <meta
+      name="description"
+      content="I am Md Azharuddin, a full stack web developer with a knack for building
+      accessible and responsive apps for web and mobile. Let's build something cool!"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://azhar1038.github.io/" />
+    <meta property="og:title" content="Md Azharuddin" />
+    <meta
+      property="og:description"
+      content="Full stack web developer. Let's build something cool!"
+    />
+    <meta property="og:image" content="https://azhar1038.github.io/logo.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://azhar1038.github.io/" />
+    <meta property="twitter:title" content="Md Azharuddin" />
+    <meta
+      property="twitter:description"
+      content="Full stack web developer. Let's build something cool!"
+    />
+    <meta
+      property="twitter:image"
+      content="https://azhar1038.github.io/logo.png"
+    />
+    <title>{title}</title>
+    <script src="/theme-init.js" is:inline></script>
+  </head>
+  <body>
+    <MouseTrailer />
+    <div class="wrapper">
+      <slot />
+    </div>
+  </body>
+</html>
+
+<style>
+  .wrapper {
+    margin-inline: var(--gap-2);
+  }
+
+  @media screen and (min-width: 51em) {
+    .wrapper {
+      max-width: 80rem;
+      margin-inline: auto;
+      padding-inline: var(--gap-1);
+    }
+  }
+</style>
