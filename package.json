@@ -2,10 +2,10 @@
   "name": "profile-v1",
   "type": "module",
   "version": "0.0.1",
-  "author": "Md Azharuddin <mdazhar.1038@gmail.com>",
+  "author": "SK ABDUL FAHEMID <skabdulfahemid@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/azhar1038/profile-v1"
+    "url": "https://github.com/FAHEMID03/fahemid03.github.io"
   },
   "scripts": {
     "dev": "astro dev",
